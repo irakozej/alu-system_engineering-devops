@@ -1,9 +1,20 @@
-#!/usr/bin/env bash
-# SetUp Process for Nginx on a server
+#!/bin/bash
 
-apt-get -y update
-apt-get -y install nginx
-ufw enable
-ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.html
-service nginx restart
+# Update the package list
+sudo apt-get update
+
+# Install nginx
+sudo apt-get install -y nginx
+
+# Make sure nginx is running
+sudo service nginx start
+
+# Create a default index.html file
+echo "Holberton School for the win!" | sudo tee /var/www/html/index.html
+
+# Make sure nginx is listening on port 80
+sudo sed -i 's/listen 80 default_server;/listen 80;/' /etc/nginx/sites-available/default
+
+# Reload nginx configuration to apply changes
+sudo service nginx reload
+
