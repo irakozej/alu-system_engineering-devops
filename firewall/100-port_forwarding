@@ -76,5 +76,5 @@ COMMIT
 
 *nat
 :PREROUTING ACCEPT [0:0]
--A PRE`ROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+-A PRE`ROUTING -p tcp --dport 8080 -j REDIRECT --to-port 800
 COMMIT
